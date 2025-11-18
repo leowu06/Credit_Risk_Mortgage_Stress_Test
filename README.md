@@ -1,4 +1,4 @@
-# Credit_Risk_Mortgage_Stress_Test
+# Credit Risk Mortgage Stress Test
 Use python creating synthetic loan records with metrics related to Expected Loss modelling and analysing stress scenario.
 Mortgage Portfolio Stress Test
 
@@ -12,13 +12,22 @@ The final dashboard (using Looker Studio) and charts are explained alongside wit
 
 After exporting the dataframe from Python as a csv file, I visualised some core metrics in Looker. The charts below illustrate the baseline KPIs alongside the stress KPIs.
 
-The dashboard highlights how the **15% decline in property value** impacted the Expected Loss. It increased around +230% in this model, and it was due to higher LTV ratios but mainly due to the Stage migrations, Stage 1 🡪 Stage 2.
+The dashboard highlights how the **15% decline in property value** impacted the Expected Loss. It increased around +230% in this model, and it was due to higher LTV ratios but mainly due to the Stage migrations, Stage 1 to Stage 2.
+
+<img width="235" height="183" alt="image" src="https://github.com/user-attachments/assets/23e3039c-f8c8-403b-8ab7-2a8554920031" />
+<img width="251" height="148" alt="image" src="https://github.com/user-attachments/assets/fa06b9ab-67f7-4d50-a840-6a82ceb9bbe1" />
 
 As LTV rises, PD reacts disproportionately, and the IFRS-9 rules amplify that effect by forcing loans to migrate into a stage with increased chance of defaulting. Once a loan enters the **underperforming stage**, the bank must recognise a **lifetime Expected Loss** instead of a 12-month one, by taking the PD over the remaining contractual lifetime – this is also why a small housing shock produces such a drastic change in total EL; hence the bank has to provision for the full, long-term risk of the asset. Whereas for Stage 1, the bank is required to hold the least capital out of the three stages, encouraging lending.
 
 In real banks, they may use early-warning signals to monitor **Significant Increase in Credit Risk (SICR) indicators**, this can be rising utilisation of credit lines, repeated payment deferral, negative changes in employment, these trigger loan migrations.
 
+<img width="237" height="184" alt="image" src="https://github.com/user-attachments/assets/b7188d93-904c-479b-bd80-2d458bc1dc01" />
+
+
 In the 2008–2009 housing crisis: property prices fell sharply while unemployment rose, many mortgages did not immediately fall behind on payments, but the risk profile clearly increased. Under the IFRS-9 rules today, this would trigger Stage-2 migration reflecting forward-looking deterioration in credit quality.
+
+<img width="237" height="178" alt="image" src="https://github.com/user-attachments/assets/8132d941-67ec-4bb9-a3a9-b4257336118a" />
+
 
 Because property values were shocked by –15%, the Loan-to-Value ratios in the portfolio increase by roughly the same magnitude.
 
@@ -28,11 +37,16 @@ In addition, banks typically track **LTV at three levels**: origination, current
 
 The LGD chart shows a much smaller change compared with PD or Expected Loss. This is mainly because the LGD structure in this simplified model is defined using broad LTV buckets, since the shift in the average LTV was from 0.79 🡪 0.92 it meant that most remained in the same LGD band.
 
-LGD is calculated as
+<img width="241" height="173" alt="image" src="https://github.com/user-attachments/assets/a6ab9b99-ffd0-4f1c-80b7-199eaa3b75b9" />
+
+LGD is calculated as 1 – Recovery rate
 
 In reality, banks incorporate factors such as **Forced-Sale Discounts**, which explain why banks rarely recover 100% of the property’s market value. Repossessed properties must be sold fast to **minimise carrying costs** and to comply with **regulatory recovery timelines**. Other factors like **Time in Default (TID)** that depict the foregone interest, and selling costs may also be applied.
 
 The PD chart highlights a close to doubling as consequence of the stress, This is expected, since PD is more sensitive to collateral deterioration than LGD.
+
+<img width="241" height="177" alt="image" src="https://github.com/user-attachments/assets/1d1af560-9204-4765-8209-83ac2035765a" />
+
 
 In real banking, PD is not driven by a simple multiplier but by full statistical models that incorporate borrower data such as income, employment status, interest rates.
 
